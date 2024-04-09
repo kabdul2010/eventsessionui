@@ -1,0 +1,156 @@
+<mat-card class="custom-card">
+    <div class="container">
+        <h2 class="client-details-heading">ADD CLIENT</h2>
+        <div class="form-container">
+            <form [formGroup]='clientForm' (ngSubmit)="submitForm()">
+                <div class="form-group"
+                    [class.error]="clientForm.get('clientName')!.invalid && clientForm.get('clientName')!.touched">
+                    <label for="clientName">Client Name</label>
+                    <input type="text" id="clientName" formControlName="clientName">
+                    <small
+                        *ngIf="clientForm.get('clientName')!.errors?.['required'] && clientForm.get('clientName')!.touched"
+                        class="error-message">Client Name is required.</small>
+                </div>
+
+                <div class="form-group"
+                    [class.error]="clientForm.get('currency')!.invalid && clientForm.get('currency')!.touched">
+                    <label for="currency">Currency</label>
+                    <select id="currency" formControlName="currency" required>
+                        <option value="" disabled selected>Select Currency</option>
+                        <option value="USD">USD - United States Dollar</option>
+                        <option value="EUR">EUR - Euro</option>
+                        <option value="GBP">GBP - British Pound Sterling</option>
+                        <option value="JPY">JPY - Japanese Yen</option>
+                        <option value="CAD">CAD - Canadian Dollar</option>
+                        <option value="AUD">AUD - Australian Dollar</option>
+                        <option value="CHF">CHF - Swiss Franc</option>
+                        <option value="CNY">CNY - Chinese Yuan</option>
+                        <option value="SEK">SEK - Swedish Krona</option>
+                        <option value="NZD">NZD - New Zealand Dollar</option>
+                        <option value="KRW">KRW - South Korean Won</option>
+                        <option value="SGD">SGD - Singapore Dollar</option>
+                        <option value="NOK">NOK - Norwegian Krone</option>
+                        <option value="MXN">MXN - Mexican Peso</option>
+                        <option value="INR">INR - Indian Rupee</option>
+                    </select>
+                    <small
+                        *ngIf="clientForm.get('currency')!.errors?.['required'] && clientForm.get('currency')!.touched"
+                        class="error-message">Currency is required.</small>
+                </div>
+
+                <div class="form-group"
+                    [class.error]="clientForm.get('emailId')!.invalid && clientForm.get('emailId')!.touched">
+                    <label for="emailId">Email Id</label>
+                    <input type="text" id="emailId" formControlName="emailId" required>
+                    <small *ngIf="clientForm.get('emailId')!.errors?.['required'] && clientForm.get('emailId')!.touched"
+                        class="error-message">Email is required.</small>
+                </div>
+
+
+                <div class="form-group"
+                    [class.error]="clientForm.get('firstName')!.invalid && clientForm.get('firstName')!.touched">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" formControlName="firstName" required>
+                    <small
+                        *ngIf="clientForm.get('firstName')!.errors?.['required'] && clientForm.get('firstName')!.touched"
+                        class="error-message">First Name is required.</small>
+                </div>
+
+                <div class="form-group"
+                    [class.error]="clientForm.get('lastName')!.invalid && clientForm.get('lastName')!.touched">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" formControlName="lastName" required>
+                    <small
+                        *ngIf="clientForm.get('lastName')!.errors?.['required'] && clientForm.get('lastName')!.touched"
+                        class="error-message">Last Name is required.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" formControlName="phone">
+                </div>
+
+                <div class="form-group"
+                    [class.error]="clientForm.get('mobile')!.invalid && clientForm.get('mobile')!.touched">
+                    <label for="mobile">Mobile</label>
+                    <input type="tel" id="mobile" formControlName="mobile" required>
+                    <small *ngIf="clientForm.get('mobile')!.errors?.['required'] && clientForm.get('mobile')!.touched"
+                        class="error-message">Mobile No. is required.</small>
+                    <small *ngIf="clientForm.get('mobile')!.errors?.['pattern'] && clientForm.get('mobile')!.touched"
+                        class="error-message">Please enter a valid 10-digit mobile number.</small>
+
+                </div>
+
+                <div class="form-group"
+                    [class.error]="clientForm.get('streetAddress')!.invalid && clientForm.get('streetAddress')!.touched">
+                    <label for="streetAddress">Street Address</label>
+                    <input type="text" id="streetAddress" formControlName="streetAddress" required>
+                    <small
+                        *ngIf="clientForm.get('streetAddress')!.errors?.['required'] && clientForm.get('streetAddress')!.touched"
+                        class="error-message">Address is required.</small>
+                </div>
+
+                <div class="form-group"
+                    [class.error]="clientForm.get('city')!.invalid && clientForm.get('city')!.touched">
+                    <label for="city">City</label>
+                    <input type="text" id="city" formControlName="city" required>
+                    <small *ngIf="clientForm.get('city')!.errors?.['required'] && clientForm.get('city')!.touched"
+                        class="error-message">City is required.</small>
+                </div>
+
+                <div class="form-group"
+                    [class.error]="clientForm.get('state')!.invalid && clientForm.get('state')!.touched">
+                    <label for="state">State</label>
+                    <input type="text" id="state" formControlName="state" required>
+                    <small *ngIf="clientForm.get('state')!.errors?.['required'] && clientForm.get('state')!.touched"
+                        class="error-message">State is required.</small>
+                </div>
+
+                <div class="form-group"
+                    [class.error]="clientForm.get('zip')!.invalid && clientForm.get('zip')!.touched">
+                    <label for="zip">Zip</label>
+                    <input type="tel" id="zip" formControlName="zip" required>
+                    <small *ngIf="clientForm.get('zip')!.errors?.['required'] && clientForm.get('zip')!.touched"
+                        class="error-message">Zip is required.</small>
+                </div>
+
+                <div class="form-group"
+                    [class.error]="clientForm.get('country')!.invalid && clientForm.get('country')!.touched">
+                    <label for="country">Country</label>
+                    <input type="text" id="country" formControlName="country" required>
+                    <small *ngIf="clientForm.get('country')!.errors?.['required'] && clientForm.get('country')!.touched"
+                        class="error-message">Country is required.</small>
+                </div>
+
+                <div class="form-group"
+                    [class.error]="clientForm.get('industry')!.invalid && clientForm.get('industry')!.touched">
+                    <label for="industry">Industry</label>
+                    <input type="text" id="industry" formControlName="industry" required>
+                    <small
+                        *ngIf="clientForm.get('industry')!.errors?.['required'] && clientForm.get('industry')!.touched"
+                        class="error-message">Industry is required.</small>
+                </div>
+
+                <div class="form-group"
+                    [class.error]="clientForm.get('companySize')!.invalid && clientForm.get('companySize')!.touched">
+                    <label for="companySize">Company Size</label>
+                    <input type="tel" id="companySize" formControlName="companySize" required>
+                    <small
+                        *ngIf="clientForm.get('companySize')!.errors?.['required'] && clientForm.get('companySize')!.touched"
+                        class="error-message">Company Size is required.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" formControlName="description"></textarea>
+                </div>
+
+                <div class="form-group text-center">
+                    <button type="submit" [disabled]="!clientForm.valid">Submit</button>
+                    <span class="button-space"></span>
+                    <button type="button" (click)="clearForm()">Clear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</mat-card>

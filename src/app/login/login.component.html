@@ -1,0 +1,54 @@
+<script src="https://accounts.google.com/gsi/client" async></script>
+
+<div class="boootstrap-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h1 class="text-centre">Login here!!</h1>
+        <form (ngSubmit)="onSubmit()">
+          <mat-form-field class="full-width bottom-margin" appearance="outline">
+            <mat-icon matPrefix>person_outline</mat-icon>
+            <mat-label>UserName</mat-label>
+            <input
+              name="username"
+              required
+              [(ngModel)]="credentials.username"
+              type="text"
+              matInput
+            />
+          </mat-form-field>
+
+          <br />
+          <mat-form-field class="full-width bottom-margin" appearance="outline">
+            <mat-icon matPrefix>lock_outline</mat-icon>
+            <mat-label>Password</mat-label>
+            <input
+              name="password"
+              required
+              [(ngModel)]="credentials.password"
+              type="password"
+              matInput
+            />
+          </mat-form-field>
+
+          <div class="container text-centre">
+            <button type="submit" mat-raised-button color="primary">
+              Login
+            </button>
+            <button
+              type="button"
+              mat-button
+              color="warn"
+              (click)="forgotPassword()"
+            >
+              Forgot Password?
+            </button>
+          </div>
+          <span class="button-space"></span>
+
+       
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

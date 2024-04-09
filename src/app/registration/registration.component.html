@@ -1,0 +1,55 @@
+<div class="boootstrap-wrapper ">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6  offset-md-3">
+        <h1 class="text-center">Register here!!</h1>
+        <form [formGroup]="registrationForm" #formDirective="ngForm"
+          (ngSubmit)="onSubmit(registrationForm, formDirective)">
+          <mat-form-field class="full-width bottom-margin" appearance="outline">
+            <mat-icon matPrefix>person_outline</mat-icon>
+            <input autofocus type="text" width="100%" matInput placeholder="Username *" formControlName="username">
+
+            <mat-error *ngIf="checkValidation('username')">
+              {{ fieldRequired }}
+            </mat-error>
+          </mat-form-field>
+          <br />
+          <mat-form-field class="full-width bottom-margin" appearance="outline">
+            <mat-icon matPrefix>email</mat-icon>
+            <input autofocus type="email" matInput placeholder="Email *" formControlName="email">
+
+            <mat-error *ngIf="checkValidation('email')">
+              {{ emailErrors() }}
+            </mat-error>
+          </mat-form-field>
+          <br />
+          <mat-form-field class="full-width bottom-margin" appearance="outline">
+            <mat-icon matPrefix>lock_outline</mat-icon>
+            <input autofocus type="password" autocomplete="false" matInput placeholder="Password *"
+              formControlName="password">
+            <mat-hint>Choose a password of at least eight characters, one uppercase letter and one number</mat-hint>
+
+            <mat-error *ngIf="checkValidation('password')">
+              {{ getErrorPassword() }}
+            </mat-error>
+          </mat-form-field>
+          <br />
+          <mat-form-field class="full-width bottom-margin" appearance="outline">
+            <mat-icon matPrefix>lock_outline</mat-icon>
+            <input autofocus type="password" autocomplete="false" matInput placeholder="Confirm Password *"
+              formControlName="confirmPassword">
+
+            <mat-error *ngIf="checkValidation('password')">
+              {{ getErrorPassword() }}
+            </mat-error>
+          </mat-form-field>
+          <br />
+          <div style="margin-bottom: 10%; text-align: center;">
+            <button style="width: 50%;" [disabled]="registrationForm.invalid" type="submit" mat-raised-button
+              color="primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

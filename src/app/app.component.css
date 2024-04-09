@@ -1,0 +1,30 @@
+.app-sidenav {
+    background-color: black;
+}
+
+.content-container {
+    min-height: 25vh;
+    padding: 75px;
+}
+
+.app-container {
+    height: 86%;
+    margin: 0;
+}
+
+.white-font {
+    color: white;
+}
+
+mat-toolbar {
+    background-color: black;
+    color: white;
+}
+
+mat-expansion-panel {
+    background-color: black;
+}
+
+mat-expansion-panel-header {
+    color: white;
+}

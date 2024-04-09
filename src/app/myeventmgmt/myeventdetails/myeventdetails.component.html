@@ -1,0 +1,54 @@
+<button (click)="goBack()">Back</button>
+
+
+<mat-card class="custom-card">
+    <div class="client-details-container">
+        <h2 class="client-details-heading">My Event DETAILS</h2>
+        <div class="client-details">
+
+            <div>
+                <label><strong>Event ID:</strong></label>
+                <span>{{eventEntity.eventId}}</span>
+            </div>
+
+            <div>
+                <label><strong>Event Name:</strong></label>
+                <span>{{eventEntity.eventname}}</span>
+            </div>
+
+            <div>
+                <label><strong>Organized by:</strong></label>
+                <span>{{eventEntity.organizedBy}}</span>
+            </div>
+
+            <div>
+                <label><strong>Create At:</strong></label>
+                <span>{{eventEntity.dateCreated}}</span>
+            </div>
+            <div>
+                <label><strong>Description:</strong></label>
+                <span>{{eventEntity.description}}</span>
+            </div>
+           
+        </div>
+    </div>
+</mat-card>
+
+<h1>Invitee List</h1>
+<table>
+    <tr>
+        <th>User</th>
+        <th>Status</th>
+     
+    </tr>
+    @for (proposal of invitees; track proposal.title) {
+        <tr>
+          <td>{{ proposal.user }}</td>
+          <td>{{ proposal.inviteStatus }}</td>
+       
+        </tr>
+      } @empty {
+        <p>No invitees added yet!</p>
+      }
+</table>
+

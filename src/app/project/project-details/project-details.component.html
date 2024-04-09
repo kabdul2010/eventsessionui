@@ -1,0 +1,54 @@
+
+<button (click)="goBack()">Back</button>
+<mat-card class="custom-card">
+    <div class="project-details-container">
+        <h2 class="project-details-heading">PROJECT DETAILS</h2>
+        <div class="project-details">
+            <div>
+                <label><strong>Project Name:</strong></label>
+                <span>{{ projectEntity.projectName }}</span>
+            </div>
+            <div>
+                <label><strong>Client Name:</strong></label>
+                <span>{{ projectEntity.clientName }}</span>
+            </div>
+            <div>
+                <label><strong>Project Cost:</strong></label>
+                <span>{{ projectEntity.projectCost }}</span>
+            </div>
+            <div>
+                <label><strong>Project Head:</strong></label>
+                <span>{{ projectEntity.projectHead }}</span>
+            </div>
+            <div>
+                <label><strong>Rate Per Hour:</strong></label>
+                <span>{{ projectEntity.rph }}</span>
+            </div>
+            <div>
+                <label><strong>Project Manager:</strong></label>
+                <span>{{ projectEntity.projectManager }}</span>
+            </div>
+            <div>
+                <label><strong>Description:</strong></label>
+                <span>{{ projectEntity.description }}</span>
+            </div>
+            <div *ngIf="projectEntity.projectUsers && projectEntity.projectUsers.length > 0">
+                <label><strong>Users:</strong></label>
+                <span>
+                    <ng-container *ngFor="let user of projectEntity.projectUsers">
+                        - {{ user.user }}<br>
+                    </ng-container>
+                </span>
+            </div>
+            <div *ngIf="projectEntity.projectUsers && projectEntity.projectUsers.length > 0">
+                <label><strong>Departments:</strong></label>
+                <span>
+                    <ng-container *ngFor="let department of projectEntity.projectUsers">
+                        - {{ department.department }}<br>
+                    </ng-container>
+                </span>
+            </div>
+        </div>
+    </div>
+</mat-card>
+

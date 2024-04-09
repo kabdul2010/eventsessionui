@@ -1,0 +1,13 @@
+.popup-message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 100%;
+}
+
+.success-message {
+    color: rgb(51, 232, 133);
+}
+
+.error-message {
+    color: red;
+}

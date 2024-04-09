@@ -1,0 +1,71 @@
+<div class="client-table">
+  <div class="filter-and-button">
+    <mat-form-field class="filter">
+      <mat-label>Filter</mat-label>
+      <input style="width: 180%;" matInput (keyup)="applyFilter($event)" placeholder="enter something here" #input>
+    </mat-form-field>
+  </div>
+
+  <div style="text-align: center;">
+    <h2>My Sessions </h2>
+  </div>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="S.No">
+        <th mat-header-cell *matHeaderCellDef mat-header class="header-cell"> S.NO. </th>
+        <td mat-cell *matCellDef="let i=index"> {{i+1}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="eventname">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-cell"> Event Name </th>
+        <td mat-cell *matCellDef="let event"> {{event.eventname}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="eventId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-cell"> Event ID </th>
+        <td mat-cell *matCellDef="let event"> {{event.eventId}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-cell"> Description </th>
+        <td mat-cell *matCellDef="let event"> {{event.description}} </td>
+      </ng-container>
+
+
+
+     
+
+
+      <ng-container matColumnDef="Actions">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> Detail </th>
+        <td mat-cell *matCellDef="let event">
+        
+          <button mat-icon-button color="primary" (click)="eventDetails(event.eventId)">
+            Detail   
+          </button>
+      </ng-container>
+
+      <ng-container matColumnDef="Proposal">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> Summary </th>
+        <td mat-cell *matCellDef="let event">
+        
+          <button mat-icon-button color="primary" (click)="eventProposalDetails(event.eventId)">
+            Proposal   
+          </button>
+      </ng-container>
+      
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let exam; columns: displayedColumns;"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 15]" aria-label="Select page of users"></mat-paginator>
+  </div>
+
+</div>

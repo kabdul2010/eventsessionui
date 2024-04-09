@@ -1,0 +1,47 @@
+<mat-card class="custom-card">
+  <div class="container">
+    <h2 class="project-details-heading">Create Session</h2>
+    <div class="form-container">
+      <form [formGroup]='sessionForm' (ngSubmit)="submitForm()">
+        
+        <div class="form-group" [class.error]="sessionForm.get('eventName')!.invalid && sessionForm.get('eventName')!.touched">
+          <label for="eventName"> Name</label>
+          <input type="text" id="eventName" formControlName="eventName">
+          <small *ngIf="sessionForm.get('eventName')!.errors?.['required'] && sessionForm.get('eventName')!.touched" class="error-message">Session Name is required.</small>
+        </div>
+  
+        <h3>Invitees      <mat-icon (click)="addUsersToSession()" color="primary">add</mat-icon>
+          <mat-icon (click)="removeLastSessionUser()" color="primary">remove</mat-icon></h3>
+   
+       
+
+        <div formArrayName="sessionUsers">
+          <div *ngFor="let userGroup of sessionUsers.controls; let i = index">
+            <div [formGroupName]="i">
+              <div class="form-group">
+                <label for="user">Invitee</label>
+                <input type="text" id="user" formControlName="user">
+                <small *ngIf="userGroup.get('user')?.errors?.['required'] && userGroup.get('user')!.touched" class="error-message">User is required.</small>
+
+              </div>
+             
+            </div>
+          </div>
+        </div>
+        
+       
+   
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" formControlName="description"></textarea>
+        </div>
+
+        
+        <button type="submit" mat-raised-button color="primary">Submit</button>
+         <span class="button-space"></span>
+         <button type="button" (click)="clearForm()">Clear</button>
+      </form>
+    </div>
+  </div>
+</mat-card>

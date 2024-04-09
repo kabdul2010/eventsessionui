@@ -1,0 +1,96 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        <button style="color: white;" mat-button (click)="goToHome()">
+            <mat-icon>home</mat-icon> Home
+        </button>
+        <app-popup></app-popup>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container class="app-container">
+    <mat-sidenav #sidenav [(opened)]="opened" mode="side" class="app-sidenav">
+        <mat-nav-list>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header *ngIf="!isLoggedIn()" >
+                    PROFILE
+                </mat-expansion-panel-header>
+                <mat-expansion-panel-header *ngIf="isLoggedIn()" >
+                    <span class="white-font">{{loggedUserRecord}}</span>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <a mat-list-item *ngIf="!isLoggedIn()" routerLink="/register">
+                        <span class="white-font">Sign Up</span>
+                    </a>
+                    <a *ngIf="loggedIn==false " mat-list-item routerLink="/login">
+                        <span class="white-font">Login</span>
+                    </a>
+                    <a mat-list-item>
+                        <span *ngIf="loggedIn==true" (click)="logoutUser()" class="white-font">Logout</span>
+                    </a>
+                </mat-nav-list>
+            </mat-expansion-panel>
+
+            
+            <mat-expansion-panel>
+                <mat-expansion-panel-header *ngIf="isLoggedIn()">
+                    SESSION OPERATIONS
+                </mat-expansion-panel-header>
+
+                <mat-nav-list>
+                <a mat-list-item routerLink="eventmgmt/event-setup">
+                    <span class="white-font">Create Session</span>
+            </a>
+</mat-nav-list>
+                <mat-nav-list>
+
+                   
+                    <a mat-list-item routerLink="activeeventmgmt/list/eventlist">
+                        <span class="white-font">Active Live Sessions</span>
+                    </a>
+                    
+                </mat-nav-list>
+
+                <mat-nav-list>
+
+                   
+                    <a mat-list-item routerLink="myeventmgmt/list/eventlist">
+                        <span class="white-font">My Sessions</span>
+                    </a>
+                    
+                </mat-nav-list>
+
+               
+
+             
+
+                <mat-nav-list>
+
+                   
+                    <a mat-list-item routerLink="eventmgmt/list/eventlist">
+                        <span class="white-font">All Ended Sessions</span>
+                    </a>
+                    
+                </mat-nav-list>
+
+              
+                
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header *ngIf="isLoggedIn()">
+                 MASTER OPERATIONS
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="client/list/addClient">
+                        <span class="white-font">Places List</span>
+                    </a>
+                    
+                </mat-nav-list>
+                
+            </mat-expansion-panel>
+          
+          
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="content-container">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

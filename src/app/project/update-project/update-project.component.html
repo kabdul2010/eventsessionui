@@ -1,0 +1,81 @@
+<button (click)="goBack()">Back</button>
+<mat-card class="custom-card">
+   <div class="container">
+     <h2 class="project-details-heading">UPDATE PROJECT</h2>
+     <div class="form-container">
+       <form [formGroup]='projectForm' (ngSubmit)="submitForm()">
+         
+         <div class="form-group" [class.error]="projectForm.get('projectName')!.invalid && projectForm.get('projectName')!.touched">
+           <label for="projectName">Project Name</label>
+           <input type="text" id="projectName" formControlName="projectName">
+           <small *ngIf="projectForm.get('projectName')!.errors?.['required'] && projectForm.get('projectName')!.touched" class="error-message">Project Name is required.</small>
+         </div>
+ 
+         <div class="form-group">
+           <mat-form-field class="w-full">
+            <mat-label for="clientName">Client Name</mat-label>
+            <mat-select formControlName="clientName" name="clientName" id="clientName">
+               @for (clientName of data; track clientName) {
+                 <mat-option [value]="clientName.value">{{clientName.value}}</mat-option>
+               }
+             </mat-select>
+          </mat-form-field>
+         </div>
+ 
+         <div class="form-group">
+           <label for="projectCost">Project Cost</label>
+           <input type="number" id="projectCost" formControlName="projectCost">
+           <small *ngIf="projectForm.get('projectCost')!.errors?.['pattern'] && projectForm.get('projectCost')!.touched"
+           class="error-message">Only Number is Allowed.</small>
+         </div>
+ 
+         <div class="form-group">
+           <label for="projectHead">Project Head</label>
+           <input type="number" id="projectHead" formControlName="projectHead">
+         </div>
+ 
+         <div class="form-group">
+           <label for="rph">Rate Per Hour (RPH)</label>
+           <input type="number" id="rph" formControlName="rph">
+           <small *ngIf="projectForm.get('rph')!.errors?.['pattern'] && projectForm.get('rph')!.touched"
+           class="error-message">Only Number is Allowed.</small>
+         </div>
+ 
+         <div class="form-group">
+           <label for="projectManager">Project Manager</label>
+           <input type="text" id="projectManager" formControlName="projectManager">
+         </div>
+ 
+         <div formArrayName="projectUsers">
+           <div *ngFor="let userGroup of projectUsers.controls; let i = index">
+             <div [formGroupName]="i">
+               <div class="form-group">
+                 <label for="user">User</label>
+                 <input type="text" id="user" formControlName="user">
+                 <small *ngIf="userGroup.get('user')?.errors?.['required'] && userGroup.get('user')!.touched" class="error-message">User is required.</small>
+ 
+               </div>
+               <div class="form-group">
+                 <label for="department">Department</label>
+                 <input type="text" id="department" formControlName="department">
+               </div>
+             </div>
+           </div>
+         </div>
+       
+          <h2>Project Users</h2>
+          <mat-icon (click)="updateProjectUser()" color="primary">add</mat-icon>
+          <mat-icon (click)="removeLastProjectUser()" color="primary">remove</mat-icon>
+          
+         <div class="form-group">
+           <label for="description">Description</label>
+           <textarea id="description" formControlName="description"></textarea>
+         </div>
+ 
+        <button type="submit" [disabled]="!projectForm.valid">Submit</button>
+         <span class="button-space"></span>
+         <button type="button" (click)="clearForm()">Clear</button>
+       </form>
+     </div>
+   </div>
+ </mat-card>

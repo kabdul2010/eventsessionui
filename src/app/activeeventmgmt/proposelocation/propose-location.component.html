@@ -1,0 +1,39 @@
+<mat-card class="custom-card">
+    <div class="container">
+      <h2 class="project-details-heading">Propose Location</h2>
+      <div class="form-container">
+        <form [formGroup]='proposeLocationForm' (ngSubmit)="submitForm()">
+          
+       
+          <div class="form-group">
+
+          <button type="button" (click)="createNewPlace(eventId)">Create New Place</button>
+  </div>
+          <div class="form-group">
+            <mat-form-field class="w-full">
+             <mat-label for="placeName">Select Propose Location Name</mat-label>
+             <mat-select formControlName="placeName" name="placeName" id="id">
+                @for (placeName of data; track placeName) {
+                  <mat-option [value]="placeName.value">{{placeName.value}}</mat-option>
+                }
+              </mat-select>
+           </mat-form-field>
+          </div>
+  
+        
+          
+         
+          
+         
+  
+         
+  
+          
+          <button type="submit" mat-raised-button color="primary">Submit</button>
+           <span class="button-space"></span>
+           <button type="button" (click)="clearForm()">Clear</button>
+        </form>
+      </div>
+    </div>
+  </mat-card>
+  

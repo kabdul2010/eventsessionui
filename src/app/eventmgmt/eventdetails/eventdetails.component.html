@@ -1,0 +1,39 @@
+<button (click)="goBack()">Back</button>
+<br/>
+<br/>
+<mat-card class="custom-card">
+    <div class="client-details-container">
+        <h2 class="client-details-heading">Event DETAILS</h2>
+        <div class="client-details">
+
+            <div>
+                <label><strong>Event ID:</strong></label>
+                <span>{{eventEntity.eventId}}</span>
+            </div>
+
+            <div>
+                <label><strong>Event Name:</strong></label>
+                <span>{{eventEntity.eventname}}</span>
+            </div>
+
+            <div>
+                <label><strong>Organized by:</strong></label>
+                <span>{{eventEntity.organizedBy}}</span>
+            </div>
+
+            <div>
+                <label><strong>Create At:</strong></label>
+                <span>{{eventEntity.dateCreated}}</span>
+            </div>
+            <div>
+                <label><strong>Description:</strong></label>
+                <span>{{eventEntity.description}}</span>
+            </div>
+           
+        </div>
+    </div>
+</mat-card>
+<br/>
+<br/>
+<button (click)="joinEvent(eventEntity.eventId)">Join Session</button>
+
